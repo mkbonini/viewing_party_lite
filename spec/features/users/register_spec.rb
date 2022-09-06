@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'users registration page' do
   it 'should have a form to enter name and email and password' do
-    visit '/users/register'
+    visit '/register'
 
     fill_in('Name', with: 'Nick')
     fill_in('email', with: '123@gmail.com')
@@ -17,8 +17,8 @@ RSpec.describe 'users registration page' do
   end
 
   it 'should only accept unique email addresses' do
-    user_1 = User.create!(name: 'Mike', email: 'email@email.com')
-    visit '/users/new'
+    user_1 = User.create!(name: 'Mike', email: 'email@email.com', password: '123test')
+    visit '/register'
 
     fill_in('Name', with: 'Nick')
     fill_in('email', with: 'email@email.com')
@@ -30,7 +30,7 @@ RSpec.describe 'users registration page' do
   end
 
   it 'returns you to the new page if all details arent submitted' do
-    visit '/users/new'
+    visit '/register'
 
     fill_in('email', with: 'Email@email.com')
 

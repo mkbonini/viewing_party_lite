@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe 'landing page' do
+RSpec.describe 'login page' do
   it 'landing page has a button to login' do
     visit '/'
-
+    
     click_on("Log In")
 
     expect(current_path).to eq("/login")

@@ -19,7 +19,8 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome, #{user.name}!"
     else
       redirect_to '/users/new'
-      flash[:alert] = 'Error: Please fill in all fields.  Email must be unique.'
+      # flash[:alert] = 'Error: Please fill in all fields.  Email must be unique.'
+      flash[:error] = user.errors.full_messages
     end
   end
 

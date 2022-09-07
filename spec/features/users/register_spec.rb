@@ -38,7 +38,7 @@ RSpec.describe 'users registration page' do
 
     click_on('Create New User')
 
-    expect(page).to have_content('Error: Please fill in all fields. Email must be unique.')
+    expect(page.text).to have_content("Name can't be blank")
     expect(current_path).to eq('/users/new')
   end
 
@@ -53,7 +53,7 @@ RSpec.describe 'users registration page' do
     click_on('Create New User')
 
     expect(current_path).to eq("/users/new")
-    expect(page).to have_content('Error: Please fill in all fields. Email must be unique.')
+    expect(page).to have_content("Password confirmation doesn't match Password")
   end
 
 end

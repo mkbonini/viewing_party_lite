@@ -17,8 +17,8 @@ RSpec.describe 'landing page' do
   end
 
   it 'has a list of existing users' do
-    user_1 = User.create!(name: 'Mike', email: 'email@email.com', password: '123test')
-    user_2 = User.create!(name: 'Nick', email: '123@email.com', password: '123test')
+    user_1 = User.create!(name: 'Mike', email: 'email@email.com', password: '123test', password_confirmation: '123test')
+    user_2 = User.create!(name: 'Nick', email: '123@email.com', password: '123test', password_confirmation: '123test')
 
     visit '/'
 
@@ -31,7 +31,7 @@ RSpec.describe 'landing page' do
   end
 
   it 'users emails link to user show page' do
-    user_1 = User.create!(name: 'Mike', email: 'email@email.com', password: '123test')
+    user_1 = User.create!(name: 'Mike', email: 'email@email.com', password: '123test', password_confirmation: '123test')
 
     visit '/'
 

@@ -9,6 +9,7 @@ RSpec.describe 'users registration page' do
     fill_in('Name', with: 'Nick')
     fill_in('email', with: '123@gmail.com')
     fill_in('password', with: '123test')
+    fill_in('password_confirmation', with: '123test')
 
     click_on('Create New User')
 
@@ -17,12 +18,13 @@ RSpec.describe 'users registration page' do
   end
 
   it 'should only accept unique email addresses' do
-    user_1 = User.create!(name: 'Mike', email: 'email@email.com', password: '123test')
+    user_1 = User.create!(name: 'Mike', email: 'email@email.com', password: '123test', password_confirmation: '123test')
     visit '/register'
 
     fill_in('Name', with: 'Nick')
     fill_in('email', with: 'email@email.com')
     fill_in('password', with: '123test')
+    fill_in('password_confirmation', with: '123test')
 
     click_on('Create New User')
 
@@ -39,4 +41,19 @@ RSpec.describe 'users registration page' do
     expect(page).to have_content('Error: Please fill in all fields. Email must be unique.')
     expect(current_path).to eq('/users/new')
   end
+
+  it 'returns to new page if passwords dont match' do
+    visit '/register'
+
+    fill_in('Name', with: 'Nick')
+    fill_in('email', with: '123@gmail.com')
+    fill_in('password', with: '123test')
+    fill_in('password_confirmation', with: 'test123')
+
+    click_on('Create New User')
+
+    expect(current_path).to eq("/users/new")
+    expect(page).to have_content('Error: Please fill in all fields. Email must be unique.')
+  end
+
 end

@@ -17,8 +17,8 @@ RSpec.describe 'landing page' do
   end
 
   it 'has a list of existing users' do
-    user_1 = User.create!(name: 'Mike', email: 'email@email.com')
-    user_2 = User.create!(name: 'Nick', email: '123@email.com')
+    user_1 = User.create!(name: 'Mike', email: 'email@email.com', password: '123test', password_confirmation: '123test')
+    user_2 = User.create!(name: 'Nick', email: '123@email.com', password: '123test', password_confirmation: '123test')
 
     visit '/'
 
@@ -26,12 +26,12 @@ RSpec.describe 'landing page' do
       expect(page).to have_content("email@email.com's Dashboard")
       expect(page).to have_content("123@email.com's Dashboard")
     end
-    expect(User.all).to eq([user_1, user_2])
+    expect(User.all).to match_array([user_1, user_2])
     expect(User.count).to eq(2)
   end
 
   it 'users emails link to user show page' do
-    user_1 = User.create!(name: 'Mike', email: 'email@email.com')
+    user_1 = User.create!(name: 'Mike', email: 'email@email.com', password: '123test', password_confirmation: '123test')
 
     visit '/'
 

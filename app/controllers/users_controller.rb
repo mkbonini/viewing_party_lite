@@ -9,13 +9,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new; end
+  def new
+  end
 
   def create
     user = User.new(user_params)
-
     if user.save
       redirect_to "/users/#{user.id}"
+      flash[:success] = "Welcome, #{user.name}!"
     else
       redirect_to '/users/new'
       flash[:alert] = 'Error: Please fill in all fields.  Email must be unique.'
@@ -25,6 +26,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :email)
+    params.permit(:name, :email, :password, :password_confirmation)
   end
 end

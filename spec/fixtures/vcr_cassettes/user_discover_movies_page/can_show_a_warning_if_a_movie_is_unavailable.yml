@@ -2,6 +2,60 @@
 http_interactions:
 - request:
     method: get
+    uri: https://api.themoviedb.org/3/search/movie?api_key=&include_adult=false&language=en-US&page=1&query=AJKJSJKSKJSKJ:KJ:KJSDFKJDF!
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.5.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 06 Sep 2022 22:43:17 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=300
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 9204cf44179493ed42c678800a26918a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      Alt-Svc:
+      - h3=":443"; ma=86400
+      X-Amz-Cf-Id:
+      - nyMz3rewgzZsXw54WsnGQ2pDTbSUPCEaWesl9_rxOPgLcgZU61gPNg==
+    body:
+      encoding: UTF-8
+      string: '{"status_code":7,"status_message":"Invalid API key: You must be granted
+        a valid key.","success":false}
+
+'
+  recorded_at: Tue, 06 Sep 2022 22:43:17 GMT
+- request:
+    method: get
     uri: https://api.themoviedb.org/3/search/movie?api_key=<api_key>&include_adult=false&language=en-US&page=1&query=AJKJSJKSKJSKJ:KJ:KJSDFKJDF!
     body:
       encoding: US-ASCII
@@ -27,7 +81,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Fri, 26 Aug 2022 15:45:22 GMT
+      - Tue, 06 Sep 2022 22:48:17 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -44,15 +98,15 @@ http_interactions:
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 badefad2d1fb92bb4620df1ce11d8c92.cloudfront.net (CloudFront)
+      - 1.1 befcfd7ee847a3c890471f27612dbcde.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN52-P2
       Alt-Svc:
       - h3=":443"; ma=86400
       X-Amz-Cf-Id:
-      - uIyEfai13aI9eDjse_JyBQCUdG01YUQjqEMDuiCMJrSkyBiUn3repA==
+      - TjXL9Q2VBZthuv6KNGaS0bzNnhYxQyZTxZE8mPwAFsUb-lRd7w_L9g==
     body:
       encoding: ASCII-8BIT
       string: '{"page":1,"results":[],"total_pages":0,"total_results":0}'
-  recorded_at: Fri, 26 Aug 2022 15:45:22 GMT
+  recorded_at: Tue, 06 Sep 2022 22:48:17 GMT
 recorded_with: VCR 6.1.0

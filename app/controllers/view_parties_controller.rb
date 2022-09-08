@@ -2,8 +2,13 @@
 
 class ViewPartiesController < ApplicationController
   def new
-    @movie = MovieFacade.movie(params[:movie_id])
-    @users = User.all
+    if session[:user_id]
+      @movie = MovieFacade.movie(params[:movie_id])
+      @users = User.all
+    else
+      redirect_to "/users/#{params[:user_id]}/movies/#{params[:movie_id]}"
+      flash[:alert] = 'you must be logged in to access the movies page'
+    end
   end
 
   def create

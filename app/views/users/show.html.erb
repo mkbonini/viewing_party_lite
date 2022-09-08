@@ -1,4 +1,7 @@
 <h1><%= @user.name %>'s Dashboard </h1>
+<% if session[:user_id] %>
+    <%= button_to("Log out", "/logout", method: :delete)  %>
+<% end %>
 
 <h3><%= link_to "Discover Movies", "/users/#{@user.id}/discover" %></h3>
 
